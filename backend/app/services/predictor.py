@@ -53,9 +53,35 @@ def preprocess_input(data: dict) -> pd.DataFrame:
 
     return df
 
+def policy_reject(data):
+    income_loan_ratio = data["Monthly_Income"] / (data["Loan_Amount"] + 1)
+
+    if data["Default_Risk_Score"] >= 0.65:
+        return "High default risk"
+
+    if data["Payment_Irregularity"] >= 0.6:
+        return "Poor payment history"
+
+    if data["Behavioral_Anomaly_Index"] >= 0.7:
+        return "Unusual financial behavior"
+
+    if income_loan_ratio < 0.15:
+        return "Income insufficient for loan amount"
+
+    if data["Transaction_Inconsistency"] >= 0.6:
+        return "Unstable transaction pattern"
+
+    if (
+        data["Default_Risk_Score"] >= 0.5
+        and data["Payment_Irregularity"] >= 0.4
+    ):
+        return "Combined credit and payment risk"
+
+    return None
+
+
 # ---------------------------
 # Prediction function
-# ---------------------------
 def predict_loan(data: dict, threshold: float = 0.6):
     X = preprocess_input(data)
 
