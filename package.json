@@ -1,0 +1,26 @@
+{
+  "name": "ai-agent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "frontend": "cd frontend && npm run dev",
+  "backend": "cd backend && uvicorn app.main:app --reload",
+  "dev": "concurrently \"npm run backend\" \"npm run frontend\""
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adityas234/LOAN_APPROVAL_AI_AGENT.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Adityas234/LOAN_APPROVAL_AI_AGENT/issues"
+  },
+  "homepage": "https://github.com/Adityas234/LOAN_APPROVAL_AI_AGENT#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
