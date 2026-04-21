@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+const API = import.meta.env.VITE_API_URL;
 
 const FIELDS = [
   { key: "Gender",                    label: "Gender",                     type: "select", options: ["Male", "Female", "Other"] },
@@ -67,7 +68,7 @@ export default function App() {
 
     setLoading(true);
     try {
-      const response = await fetch("http://127.0.0.1:8000/predict-loan", {
+      const response = await fetch(`${API}/predict-loan`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
